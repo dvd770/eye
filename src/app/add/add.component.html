@@ -1,0 +1,19 @@
+<form #f="ngForm">
+  <div>
+
+    <label>הוסף מכשיר</label><br>
+    <input class="form-control" 
+    required minlength="1" 
+    ngModel name="deviceName" 
+    type="text" #deviceName>
+    <br>
+
+    <label>מספר מכשיר</label><br>
+    <input class="form-control" 
+    ngModel name="deviceNumber" #deviceNumber>
+    <br><br>
+    
+    <button class="btn btn-primary" [disabled]="!f.valid" 
+    (click)="onAddDevice(deviceName, deviceNumber)">הוסף</button>
+  </div>
+</form>
