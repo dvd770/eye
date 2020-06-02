@@ -1,32 +1,18 @@
+<form #f="ngForm">
+  <div>
+    <div class="form-group">
+      <label for="email">אימייל</label><br>
+      <input class="form-control" ngModel required minlength="4" type="email" name="email"></div>
+    <div>
+      <label for="password">סיסמא</label><br>
+      <input class="form-control" ngModel required minlength="6" type="password" name="password"><br>
+      <label class="text-riget" for="password-confirm">אשר סיסמא</label><br>
+      <input class="form-control" ngModel required minlength="6" type="password" name="password-confirm">
+    </div><br>
+  </div>
+  <button [disabled]="!f.valid" class="btn btn-primary" [ngClass]="{'cursorDefault': !f.valid}">
+    הירשם</button>
+</form><br>
 
-  <form   #f="ngForm" >
-    <div >
-      <div class="form-group">
-          <label for="email">אימייל</label><br>
-          <input class="form-control"
-          ngModel 
-          required minlength="4" 
-          type="email" name="email" ></div>
-           <div>
-          <label for="password">סיסמא</label><br>
-          <input class="form-control"
-          ngModel 
-          required minlength="6" 
-          type="password" name="password"><br>
-          <label class="text-riget" for="password-confirm">אשר סיסמא</label><br>
-          <input class="form-control"
-          ngModel 
-          required minlength="6" 
-          type="password" name="password-confirm">
-        </div><br>        
-    </div>  
-  <button [disabled]="!f.valid"
-  class="btn btn-primary"
-  [ngClass]="{'cursorDefault': !f.valid}"
-  ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."> 
-  הירשם</button>  
-  </form><br>
-  
-  <button class="btn btn-primary" [routerLink]="['/log-in']"
-  ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+<button class="btn btn-primary" [routerLink]="['/log-in']">
   כניסה</button><br>

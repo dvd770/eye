@@ -9,36 +9,34 @@ import { Chat } from './chat'
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-  chat$: any[] = [];
-  
+  chat: any[] = [];
+  name: string = 'זמני';
 
   constructor(private service: ChatService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.service.getChat()
-        .subscribe(response => {
-          this.chat$ = response.json();
-        });     
-    };
+      .subscribe(response => {
+        this.chat = response.json();
+      });
+  };
 
-createMassage(input: HTMLInputElement){
-  let msg = {massage: input.value};
-//  let name = {user.name};
-  input.value = '';
+  createMessage(input: HTMLInputElement) {
+    let msg = { message: input.value };
+    input.value = '';
 
-  this.service.createMassage(msg)
-    .subscribe(response => {
-      msg['id'] = response.json().id;
-      this.chat$.push(msg);
-    //  this.chat.push(name);
+    this.service.createMessage(msg)
+      .subscribe(response => {
+        msg['id'] = response.json().id;
+        this.chat.push(msg);
       })
   };
 
-/*  get chatSorted(){
-    return this.chat$.sort((a, b) => new Date(b.CREATE_TS).getTime() -
-    new Date(a.CREATE_TS).getTime()); 
-    };
-    */
+  /*  get chatSorted(){
+      return this.chat$.sort((a, b) => new Date(b.CREATE_TS).getTime() -
+      new Date(a.CREATE_TS).getTime()); 
+      };
+ */
 }
 
 

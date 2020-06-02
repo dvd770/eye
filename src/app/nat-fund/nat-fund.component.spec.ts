@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NatFuondComponent } from './nat-fuond.component';
+import { NatFundComponent } from './nat-fund.component';
 
-describe('NatFuondComponent', () => {
-  let component: NatFuondComponent;
-  let fixture: ComponentFixture<NatFuondComponent>;
+describe('NatFundComponent', () => {
+  let component: NatFundComponent;
+  let fixture: ComponentFixture<NatFundComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NatFuondComponent ]
+      declarations: [ NatFundComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NatFuondComponent);
+    fixture = TestBed.createComponent(NatFundComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,22 +1,16 @@
-<div  class="container"  >
-    <ul   *ngFor="let chat of chat$"
-    class="list-group ">
+<div   style="max-height: 5cm;" class="overflow-auto">
+    <ul *ngFor="let chat of chat" class="list-group ">
         <li class="list-group-item text-right">
-         {{chat.name}}: {{chat.massage}} 
-         {{chatDate | date:'MM-dd HH:mm:ss'}}
+            {{name}}: {{chat.message}}
+            {{chatDate | date:'MM-dd HH:mm:ss'}}
         </li>
     </ul>
-</div>  
-<form #f="ngForm" >
-    <input class="form-control" 
-    ngModel name="massage"
-    #massage
-    (keyup.enter)="createMassage(massage)"
-    required minlength="1">
+</div>
+<form #f="ngForm">
+    <input class="form-control" ngModel name="message" #message (keyup.enter)="createmessage(message)" required
+        minlength="1">
 </form>
 
-<button class="btn btn-primary"
-    [ngClass]="{'cursorDefault': !f.valid}"
-    [disabled]="!f.valid"
-    (click)="createMassage(massage)">שלח
+<button class="btn btn-primary" [ngClass]="{'cursorDefault': !f.valid}" [disabled]="!f.valid"
+    (click)="createmessage(message)">שלח
 </button>

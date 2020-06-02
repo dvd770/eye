@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
 import { EventList } from './event';
 import { faEye as faEye, faEyeSlash as faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { Todos } from './todos';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { faEye as faEye, faEyeSlash as faEyeSlash } from '@fortawesome/free-soli
 })
 export class EventsComponent implements OnInit {
   img = 'https://via.placeholder.com/150/92c952';
-  todos: any;
+  todos: Todos;
   val = 10;
   eventType = 'סוג אירוע';
   events: EventList;

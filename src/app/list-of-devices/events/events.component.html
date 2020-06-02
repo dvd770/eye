@@ -1,35 +1,32 @@
-
-<div  class="card " style="width: 25rem;" 
-	 *ngFor="let event of events, let todo of todos" >
-	<img [ngStyle]="{'filter':'blur(' +  val + 'px)'}" 
-	[src]="img" 
-	class="card-img-top">
+<div class="card" style="width: 25rem;" *ngFor="let event of events, let todo of todos">
+	<img [ngStyle]="{'filter':'blur(' +  val + 'px)'}" [src]="img" class="card-img-top">
 	<div class="card-body">
 		<h3 class="card-title text-center">
-			{{eventType}} 
-			
-			<a ><fa-icon (click)="onClickIcon()" [icon]="faEye"></fa-icon></a>
-			
-					
+			{{eventType}}
+
+			<a>
+				<fa-icon (click)="onClickIcon()" [icon]="faEye"></fa-icon>
+			</a>
+
+
 		</h3>
 	</div>
-	<div class="row card-footer bg-transparent no-gutters ">
+	<div class="row card-footer bg-transparent no-gutters">
 		<div class="col-2">
-			<button [ngClass]="{'cursorDefault': val > 9}" [disabled]="val > 9"
-    			class="btn btn-primary btn-block"  (click)="onClickPlos()">+</button>
+			<button [ngClass]="{'cursorDefault': val > 9}" [disabled]="val > 9" class="btn btn-primary btn-block"
+				(click)="onClickPlos()">+</button>
 		</div>
 		<div class="col text-center">
-				רמת טשטוש-{{val}}0%
+			רמת טשטוש-{{val}}0%
 		</div>
 		<div class="col-2">
-			<button [ngClass]="{'cursorDefault': val < 1}" [disabled]="val < 1"
-			class="btn btn-primary btn-block"  (click)="onClickMinus()">-</button>
+			<button [ngClass]="{'cursorDefault': val < 1}" [disabled]="val < 1" class="btn btn-primary btn-block"
+				(click)="onClickMinus()">-</button>
 		</div>
-		
+
 	</div>
-	<div class="row card-footer bg-transparent no-gutters" style="max-height: 5cm ;">
-			<app-chat></app-chat> 
+	<div class="row card-footer bg-transparent no-gutters">
+		<app-chat class="container"></app-chat>
 	</div>
-	
+
 </div>
-<pre>{{eye | json}} </pre>

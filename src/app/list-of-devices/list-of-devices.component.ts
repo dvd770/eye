@@ -13,37 +13,36 @@ import { Device } from './device';
 export class ListOfDevicesComponent implements OnInit {
   devices: Device;
   eventNum: number;
-  
-  
+
+
   constructor(private service: DeviceService, private eventNumService: EventService,
-  private router: Router, private route: ActivatedRoute) {}
-  
-  onClick(){
-     this.router.navigate(['events-log'], { relativeTo: this.route }); 
- }
- 
-    ngOnInit(){
-      this.getDeviceList();
-      this.getEventNumTs();
-    };
-      
-  getDeviceList(){
-    this.service.getDeviceList()
-      .subscribe(response => {
-      this.devices = response.json();
-    });}
-    
-    getEventNumTs(){
-      this.eventNumService.getEventsNum()
-          .subscribe(response => {
-        this.eventNum = response.json().length
-        
-      });  
-    }
-  
+    private router: Router, private route: ActivatedRoute) { }
+
+  onClick() {
+    this.router.navigate(['events-log'], { relativeTo: this.route });
   }
 
-        
+  ngOnInit() {
+    this.getDeviceList();
+    this.getEventNumTs();
+  };
 
-       
- 
+  getDeviceList() {
+    this.service.getDeviceList()
+      .subscribe(response => {
+        this.devices = response.json();
+      });
+  }
+
+  getEventNumTs() {
+    this.eventNumService.getEventsNum()
+      .subscribe(response => {
+        this.eventNum = response.json().length
+      });
+  }
+
+}
+
+
+
+

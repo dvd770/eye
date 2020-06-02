@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -12,7 +12,7 @@ import { LogInComponent } from './log-in/log-in.component';
 import { addDeviceComponent } from './add/add.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { NatFuondComponent } from './nat-fuond/nat-fuond.component';
+import { NatFundComponent } from './nat-fund/nat-fund.component';
 import { ListOfDevicesComponent } from './list-of-devices/list-of-devices.component';
 import { EventsComponent } from './list-of-devices/events/events.component';
 
@@ -23,34 +23,37 @@ import { ChatComponent } from './chat/chat.component';
 
 
 @NgModule({
-  imports:[ FontAwesomeModule, HttpModule,
+  imports: [FontAwesomeModule, HttpModule,
     HttpClientModule, BrowserModule, FormsModule, RouterModule.forRoot([
-      { 
-      path: '',
-      component: ListOfDevicesComponent},
-      { path: 'events-log',
-      component: EventsComponent},
-      { 
-      path: 'addDevice', 
-      component: addDeviceComponent
+      {
+        path: '',
+        component: ListOfDevicesComponent
       },
       {
-      path: 'log-in', 
-      component: LogInComponent
+        path: 'events-log',
+        component: EventsComponent
       },
       {
-      path: 'registration', 
-      component: RegistrationComponent
+        path: 'addDevice',
+        component: addDeviceComponent
       },
-      { 
-      path: '**', 
-      component: NatFuondComponent
+      {
+        path: 'log-in',
+        component: LogInComponent
+      },
+      {
+        path: 'registration',
+        component: RegistrationComponent
+      },
+      {
+        path: '**',
+        component: NatFundComponent
       }
-   ])],
-  declarations: [ AppComponent, LogInComponent, addDeviceComponent, 
-    RegistrationComponent, NavbarComponent, NatFuondComponent, ListOfDevicesComponent,  
-    EventsComponent, ChatComponent ],
-  bootstrap:    [ AppComponent ],
+    ])],
+  declarations: [AppComponent, LogInComponent, addDeviceComponent,
+    RegistrationComponent, NavbarComponent, NatFundComponent, ListOfDevicesComponent,
+    EventsComponent, ChatComponent],
+  bootstrap: [AppComponent],
   providers: [DeviceService, EventService]
 })
 export class AppModule { }
