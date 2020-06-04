@@ -1,16 +1,15 @@
-<div   style="max-height: 5cm;" class="overflow-auto">
-    <ul *ngFor="let chat of chat" class="list-group ">
-        <li class="list-group-item text-right">
+<div #scrollDown style="max-height: 5cm;" class="overflow-auto">
+    <ul *ngFor="let chat of chat" class="list-group" #chat>
+        <li class="list-group-item">
             {{name}}: {{chat.message}}
             {{chatDate | date:'MM-dd HH:mm:ss'}}
         </li>
     </ul>
 </div>
 <form #f="ngForm">
-    <input class="form-control" ngModel name="message" #message (keyup.enter)="createmessage(message)" required
-        minlength="1">
+    <input class="form-control" ngModel name="message" #msg (keyup.enter)="createMessage(msg)" required minlength="1">
 </form>
 
 <button class="btn btn-primary" [ngClass]="{'cursorDefault': !f.valid}" [disabled]="!f.valid"
-    (click)="createmessage(message)">שלח
+    (click)="createMessage(msg)">שלח
 </button>
