@@ -4,16 +4,14 @@ import { EventService } from '../services/event.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Device } from './device';
 
-
 @Component({
   selector: 'app-list-of-devices',
   templateUrl: './list-of-devices.component.html',
   styleUrls: ['./list-of-devices.component.css']
 })
 export class ListOfDevicesComponent implements OnInit {
-  devices: Device;
+  devices: Device[];
   eventNum: number;
-
 
   constructor(private service: DeviceService, private eventNumService: EventService,
     private router: Router, private route: ActivatedRoute) { }
@@ -27,17 +25,17 @@ export class ListOfDevicesComponent implements OnInit {
     this.getEventNumTs();
   };
 
-  getDeviceList() {
+  getDeviceList(): void {
     this.service.getDeviceList()
       .subscribe(response => {
-        this.devices = response.json();
+        this.devices = response;
       });
   }
 
-  getEventNumTs() {
+  getEventNumTs(): void {
     this.eventNumService.getEventsNum()
       .subscribe(response => {
-        this.eventNum = response.json().length
+        this.eventNum = response.length
       });
   }
 

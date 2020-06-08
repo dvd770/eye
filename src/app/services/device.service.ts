@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { Device } from '../list-of-devices/device';
-
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class DeviceService {
+
   url = "https://jsonplaceholder.typicode.com/users"
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  getDeviceList()//:Device
-  {
-    return this.http.get(this.url);
+  getDeviceList(): Observable<Device[]> {
+    return this.http.get<Device[]>
+      (this.url)
   };
 
 };

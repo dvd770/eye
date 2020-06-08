@@ -1,4 +1,4 @@
-export interface Device {
+export interface EventList {
 
   "id": number
   "name": string

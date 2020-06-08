@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ViewChildren, 
 import { ChatService } from '../services/chat.service';
 import { Chat } from './chat'
 
+
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -9,31 +10,26 @@ import { Chat } from './chat'
 })
 export class ChatComponent implements OnInit, AfterViewInit {
 
-  chat: any[] = [];
+  chat: Chat[] = [];
   name: string = 'זמני';
-  scrollContainer: any;
+  scrollContainer: HTMLElement;
 
   @ViewChild('scrollDown', { static: true }) scrollDown: ElementRef;
   @ViewChildren('chat') itemElements: QueryList<any>;
-
-
 
   constructor(private service: ChatService) { }
 
   ngOnInit() {
     this.service.getChat()
       .subscribe(response => {
-        this.chat = response.json();
+        this.chat = response;
       });
-
   };
 
   ngAfterViewInit() {
     this.scrollContainer = this.scrollDown.nativeElement;
     this.itemElements.changes.subscribe(_ => this.scrollToBottom());
   }
-
-
 
   private scrollToBottom(): void {
     this.scrollContainer.scroll({
@@ -46,9 +42,9 @@ export class ChatComponent implements OnInit, AfterViewInit {
     let msg = { msg: message.value };
     message.value = '';
 
-    this.service.createMessage(msg)
+    this.service.createMessage(msg.msg)
       .subscribe(response => {
-        msg['id'] = response.json().id;
+        msg['id'] = response.id;
         this.chat.push(msg);
       })
   };

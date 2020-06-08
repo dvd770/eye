@@ -1,33 +1,25 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { EventList } from './event';
 
 @Injectable()
 export class EventService {
   url = "https://jsonplaceholder.typicode.com/users"
-  todos = 'https://jsonplaceholder.typicode.com/todos'
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
-  getTodosList()//:Todo 
-  {
-    return this.http.get(this.todos);
+  getEventsList(): Observable<EventList[]> {
+    return this.http.get<EventList[]>(this.url);
   };
 
-  getEventsList()//:Event 
-  {
-    return this.http.get(this.url);
+  getEventsNum(): Observable<EventList[]> {
+    return this.http.get<EventList[]>(this.url)
   };
 
-  getEventsNum()//:number 
-  {
-    return this.http.get(this.url)
-  };
-
-  eyeIconClick(todos) {
-    return this.http.patch(this.todos + '/' + todos.id,
+  eyeIconClick(): Observable<boolean> {
+    return this.http.patch<boolean>(this.url + '/' + this.url['id'],
       JSON.stringify({ completed: true }));
   }
-
 
 }

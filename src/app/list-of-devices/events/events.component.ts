@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service';
-import { EventList } from './event';
+import { EventList } from '../../services/event';
 import { faEye as faEye, faEyeSlash as faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { Todos } from './todos';
-
 
 @Component({
   selector: 'app-events',
@@ -12,30 +10,29 @@ import { Todos } from './todos';
 })
 export class EventsComponent implements OnInit {
   img = 'https://via.placeholder.com/150/92c952';
-  todos: Todos;
   val = 10;
   eventType = 'סוג אירוע';
-  events: EventList;
+  events: EventList[];
   faEye = faEye;
-  eye: any;
-
-
+  eye: boolean;
+  allowed = true
 
   constructor(private service: EventService) { }
 
   ngOnInit() {
     this.service.getEventsList()
       .subscribe(response => {
-        this.events = response.json();
+        this.events = response;
       });
+  }
 
-    this.service.getTodosList()
+  onClickIcon() {
+    this.faEye = faEyeSlash;
+    this.service.eyeIconClick()
       .subscribe(response => {
-        this.todos = response.json();
-
-      });
-
-
+        this.eye = response
+        console.log(this.eye)
+      })
   }
 
   onClickMinus() {
@@ -46,12 +43,4 @@ export class EventsComponent implements OnInit {
     this.val += 1;
   }
 
-  onClickIcon() {
-    this.faEye = faEyeSlash;
-    this.service.eyeIconClick(this.todos.id)
-      .subscribe(response => {
-        this.eye = response.json().id
-        console.log(this.eye.id)
-      })
-  }
 }
