@@ -38,15 +38,17 @@ export class ChatComponent implements OnInit, AfterViewInit {
     });
   }
 
-  createMessage(message: { value: string; }) {
-    let msg = { msg: message.value };
-    message.value = '';
+  createMessage(msg: { value: string; }): void {
+    let message = { msg: msg.value };
 
-    this.service.createMessage(msg.msg)
+    this.service.createMessage(message.msg)
       .subscribe(response => {
-        msg['id'] = response.id;
-        this.chat.push(msg);
+        message = response;
+        this.chat.push(message);
+        console.log(message)
       })
+    msg.value = '';
+    console.log(message)
   };
 
 
@@ -58,5 +60,3 @@ export class ChatComponent implements OnInit, AfterViewInit {
       };
  */
 }
-
-

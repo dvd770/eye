@@ -11,5 +11,7 @@ export class LogInComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  onClick(email,password){
+    
+  }
 }
